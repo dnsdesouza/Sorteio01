@@ -1,0 +1,28 @@
+<html>
+
+    <h1></h1>
+    <button onclick="sortear();"> sorteio </button>
+
+</html>
+
+
+    <script>
+
+        var array = ['teste1', 'teste2', 'teste3', 'teste4', 'teste5', 'teste6'];
+
+        function sortear(){
+
+            var limit = array.length;
+            var random = Math.random();
+            var indexLimit = random * limit;
+            var index = Math.round(indexLimit) - 1;
+
+            console.log('random:' + random);
+            console.log('indexLimit:' + indexLimit);
+            console.log('index:' + index);
+            console.log(array[index]);
+            array.splice(index, 1);
+            console.log(array); 
+        }
+
+    </script>

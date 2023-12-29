@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Steller landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Steller Landing page | Free Bootstrap 4.1 landing page</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Steller main styles -->
+	<link rel="stylesheet" href="assets/css/steller.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+  
+    <!-- Page Header -->
+    <header class="header" id="home">
+        <div class="container">
+            <div class="infos">
+                <h6 class="subtitle">O sorteado foi</h6>
+                <h6 class="title" id="sorteado">Inicie o sorteio</h6>
+
+                <div class="buttons pt-3">
+                    <button id="sorteio" onclick="sortear();" class="btn btn-primary rounded">CLIQUE PARA SORTEAR</button>
+                </div>      
+
+            </div>              
+            <div class="img-holder">
+                <img style="height: 400px" src="assets/imgs/trevo.png" alt="">
+            </div>      
+        </div>  
+
+        
+    </header>
+    <!-- End of Page Header -->
+    
+  
+
+    <!-- Skills section -->
+    <section class="section">
+        <div class="container text-center">
+            <h6 class="section-title mb-4">SORTEADOS</h6>
+            <div id="divSorteados" class="row text-left">
+               
+            </div>  
+        </div>
+    </section>
+    <!-- End of Skills sections -->
+
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <p>Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com" target="_blank">DevCRUD</a></p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="socials">
+                        <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>
+                        <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
+                        <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
+                        <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    <!-- End of page footer -->
+	
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <!-- bootstrap 3 affix -->
+	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- steller js -->
+    <script src="assets/js/steller.js"></script>
+
+</body>
+</html>
+<script>
+
+    
+        var array = ['Nishiyamna', 'Oliverio', 'Bezerra', 'Nóbrega', 'Damasceno', 'Cleilton', 'Souza', 'Stefany', 'Gizelli', 'Bueno'];
+
+        function sortear(){
+
+            var limit = array.length - 1;
+            var random = Math.random();
+            var indexLimit = random * limit;
+            var index = Math.round(indexLimit);
+
+
+            if(limit == -1){
+                adicionarAlunoSorteadoNoTitulo("Não há mais alunos para serem sorteados.");
+                return;
+            }
+                          
+            adicionarAlunoSorteadoNaLista(array[index]);
+            adicionarAlunoSorteadoNoTitulo(array[index]);
+            
+            array.splice(index, 1);
+
+        }
+
+        function adicionarAlunoSorteadoNoTitulo(aluno){
+            $("#sorteado").text(aluno);
+        }
+        
+
+        function adicionarAlunoSorteadoNaLista(aluno){
+           var conteudoDiv =
+             "<div class='col-sm-6'>" +
+                    "<h6 class='mb-3'>" + aluno + "</h6>"+
+                    "<div class='progress'>" +
+                        "<div class='progress-bar bg-primary' role='progressbar' style='width: 100%;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'><span>100%</span></div>"+
+                    "</div>"+
+                "</div>";
+
+              $("#divSorteados").append(conteudoDiv);
+              
+
+        }
+
+</script>
